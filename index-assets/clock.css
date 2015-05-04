@@ -65,8 +65,8 @@
     Disco
 --------------------------*/
 #clock.light.disco .display {
-    -webkit-animation: disco-bg 2s infinite alternate;
-    animation: disco-bg 2s infinite alternate;
+    -webkit-animation: disco-shadow-bounce 2s infinite alternate;
+    animation: disco-shadow-bounce 2s infinite alternate;
 }
 
 
@@ -288,27 +288,6 @@
     bottom:20px;
     right:20px;
     font-size:12px;
-}
-
-/***************************
- * Disco animation
- ***************************/
-@keyframes disco-bg {
-    0% {background: rgba(255,0,0,1);}
-    20% {background: rgba(0,255,0,1);}
-    40% {background: rgba(0,0,255,1);}
-    60% {background: rgba(255,255,0,1);}
-    80% {background: rgba(0,255,255,1);}
-    100% {background: rgba(255,0,255,1);}
-}
-
-@-webkit-keyframes disco-bg {
-    0% {background: rgba(255,0,0,1);}
-    20% {background: rgba(0,255,0,1);}
-    40% {background: rgba(0,0,255,1);}
-    60% {background: rgba(255,255,0,1);}
-    80% {background: rgba(0,255,255,1);}
-    100% {background: rgba(255,0,255,1);}
 }
 
 /***************************
