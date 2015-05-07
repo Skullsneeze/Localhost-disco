@@ -7,7 +7,7 @@
     width:370px;
     padding:0;
     right: 70px;
-    top: 20px;
+    top: 40px;
     position:absolute;
 }
 
@@ -26,7 +26,7 @@
 
 #clock .display{
     text-align:center;
-    padding: 40px 20px 20px;
+    padding: 10px 20px 40px;
     border-radius:6px;
     position:relative;
     height: 54px;
@@ -254,12 +254,17 @@
 
 
 /*-------------------------
-    Weekdays
+    Date
 --------------------------*/
 
 
+#clock .date{
+    padding: 0 0 10px 0;
+    font-style: italic;
+}
+
 #clock .weekdays{
-    font-size:12px;
+    font-size:14px;
     position:absolute;
     width:100%;
     top:10px;
@@ -295,17 +300,35 @@
  ***************************/
 @media (max-width: 1245px) {
     #clock {
+        right: 50px;
+        transform:scale(0.9);
+    }
+}
+@media (max-width: 1170px) {
+    #clock {
+        right: 30px;
+        transform:scale(0.8);
+    }
+}
+@media (max-width: 1093px) {
+    #clock {
         right: 10px;
         transform:scale(0.7);
     }
 }
-@media (max-width: 1024px) {
+@media (max-width: 1015px) {
     #clock {
         right: -30px;
         transform:scale(0.5);
     }
+    #clock .display {
+        padding: 20px;
+    }
+    #clock .date {
+        display: none;
+    }
 }
-@media (max-width: 875px) {
+@media (max-width: 900px) {
     #clock {
         display: none;
     }

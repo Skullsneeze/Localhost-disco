@@ -46,19 +46,29 @@ $(function()
 
     // Add the weekday names
 
-    var weekday_names = 'MON TUE WED THU FRI SAT SUN'.split(' '),
-        weekday_holder = clock.find('.weekdays');
+    var weekday_names = 'Monday Tuesday Wednesday Thursday Friday Saturday Sunday'.split(' ');
+        weekday_holder = clock.find('.weekday');
 
     $.each(weekday_names, function(){
         weekday_holder.append('<span>' + this + '</span>');
     });
 
-    var weekdays = clock.find('.weekdays span');
+    var weekday = clock.find('.weekday span');
+        day     = clock.find('span.day'),
+        month   = clock.find('span.month'),
+        year    = clock.find('span.year');
+
+    weekday.hide();
 
 
     // Run a timer every second and update the clock
 
     (function update_time(){
+
+        // set base date
+        day.html(moment().format('Do'));
+        month.html(moment().format('MMMM'));
+        year.html(moment().format('YYYY'));
 
         // Use moment.js to output the current time as a string
         // hh is for the hours in 12-hour format,
@@ -77,7 +87,6 @@ $(function()
         // The library returns Sunday as the first day of the week.
         // Stupid, I know. Lets shift all the days one position down,
         // and make Sunday last
-
         var dow = now[6];
         dow--;
 
@@ -88,7 +97,7 @@ $(function()
         }
 
         // Mark the active day of the week
-        weekdays.removeClass('active').eq(dow).addClass('active');
+        weekday.eq(dow).show();
 
         // Set the am/pm text:
         ampm.text(now[7]+now[8]);
@@ -97,4 +106,5 @@ $(function()
         setTimeout(update_time, 1000);
 
     })();
+
 });

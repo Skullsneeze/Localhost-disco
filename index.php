@@ -28,7 +28,12 @@
 
     <div id="clock" class="light">
         <div class="display">
-            <div class="weekdays"></div>
+            <div class="date">
+                <span class="weekday"></span>
+                <span class="day"></span>
+                <span class="month"></span>
+                <span class="year"></span>
+            </div>
             <div class="ampm"></div>
             <div class="digits"></div>
         </div>
