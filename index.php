@@ -109,10 +109,10 @@
 
 
             // Get the projects dir.
-            $myProjectDir = '/htdocs/'. $config_arr['project_dir'];
+            $myProjectDir = $config_arr['project_dir'];
 
             // Open the dir.
-            $dir = opendir($myProjectDir);
+            $dir = opendir('/'. basename(__DIR__) .'/'. $myProjectDir);
 
             // Read contents of directory
             while ($read = readdir($dir)) {
@@ -128,23 +128,23 @@
 
                     // Trunk
                     if (is_dir($myProjectDir.'/'.$read.'/trunk')) {
-                        $links_arr[] = '<a target="_blank" href="'. $myProjectDir.'/'.$read.'/trunk">Trunk</a>';
+                        $links_arr[] = '<a target="_blank" href="'. $myProjectDir .'/'.$read.'/trunk">Trunk</a>';
                     }
                     // Trunk fallback
                     else {
-                        $links_arr[] = '<a target="_blank" href="'. $myProjectDir.'/'.$read.'">'. $name .'</a>';
+                        $links_arr[] = '<a target="_blank" href="'. $myProjectDir .'/'.$read.'">'. $name .'</a>';
                     }
                     // Branches
-                    if (is_dir($myProjectDir.'/'.$read.'/branches')) {
-                        $links_arr[] = '<a target="_blank" href="'. $myProjectDir.'/'.$read.'/branches">Branches</a>';
+                    if (is_dir($myProjectDir .'/'.$read.'/branches')) {
+                        $links_arr[] = '<a target="_blank" href="'. $myProjectDir .'/'.$read.'/branches">Branches</a>';
                     }
                     // Tags
-                    if (is_dir($myProjectDir.'/'.$read.'/tags')) {
-                        $links_arr[] = '<a target="_blank" href="'. $myProjectDir.'/'.$read.'/tags">Tags</a>';
+                    if (is_dir($myProjectDir .'/'.$read.'/tags')) {
+                        $links_arr[] = '<a target="_blank" href="'. $myProjectDir .'/'.$read.'/tags">Tags</a>';
                     }
                     // Meta
-                    if (is_dir($myProjectDir.'/'.$read.'/meta')) {
-                        $links_arr[] = '<a target="_blank" href="'. $myProjectDir.'/'.$read.'/meta">Meta</a>';
+                    if (is_dir($myProjectDir .'/'.$read.'/meta')) {
+                        $links_arr[] = '<a target="_blank" href="'. $myProjectDir .'/'.$read.'/meta">Meta</a>';
                     }
 
                     // set links
