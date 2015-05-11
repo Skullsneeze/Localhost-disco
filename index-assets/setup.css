@@ -1,0 +1,106 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+body,
+html{
+    background: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    padding: 10px;
+}
+
+/* Label */
+label {
+    font-size: 125%;
+    font-weight: bold;
+    margin-top: 25px;
+    display: block;
+}
+label:first-child {
+    margin-top: 0px;
+}
+
+p.note {
+    margin: 0;
+    padding: 0;
+    font-style: italic;
+    font-size: 85%;
+    color: #ccc;
+}
+
+/* Input */
+input[type="text"] {
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 3px 7px;
+    background: #fafafa;
+    width: 250px;
+    display: block;
+    box-shadow: 0 0 0 0 rgba(125,175,255,0);
+    transition: box-shadow 0.3s ease;
+}
+input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0px 0px 5px 0px rgba(150, 200, 255, 1);
+}
+
+/* Textarea */
+textarea {
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 5px 8px;
+    background: #fafafa;
+    width: 250px;
+    display: block;
+    box-shadow: 0 0 0 0 rgba(125,175,255,0);
+    transition: box-shadow 0.3s ease;
+}
+textarea:focus {
+    outline: none;
+    box-shadow: 0px 0px 5px 0px rgba(150, 200, 255, 1);
+}
+
+/* Submit button */
+input[type="submit"] {
+    font-family: 'Open Sans', sans-serif;
+    display: block;
+    width: 266px;
+    margin-top: 20px;
+    border-radius: 7px;
+    height: 25px;
+    color: #888;
+    background: none;
+    border: 2px solid #67de49;
+    transition: color, background .25s ease;
+}
+input[type="submit"]:active,
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+    outline: none;
+    color: #fff;
+    background: #67de49;
+}
+
+/***************************
+ * Responsive
+ ***************************/
+@media (max-width: 870px) {
+    ul.list li {
+        width: 49%;
+    }
+}
+@media (max-width: 607px) {
+    ul.list li{
+        width: 109%;
+    }
+
+}
+@media (max-width: 538px) {
+    input[type="text"]:focus {
+        width:200px;
+    }
+    ul.list li div.project-links a {
+        font-size: 85%;
+    }
+}

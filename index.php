@@ -40,79 +40,87 @@
     </div>
 
     <input class="search" autocomplete="off" autofocus="autofocus" id="filter" type="text" name="filter" value="" placeholder="Search for projects...">
+    <?php
 
-    <div class="list-container">
-        <h2 class="hotlinks-text header">Hotlinks</h2>
-        <ul class="list">
-            <li>
-                <div class="project-wrapper">
-                    <a target="_blank" href="https://pharmasolutions.zendesk.com/agent"><div class="project">PSP Support</div></a>
-                </div>
-            </li>
-            <li>
-                <div class="project-wrapper">
-                    <a target="_blank" href="http://support.code.nl"><div class="project">Code Support</div></a>
-                </div>
-            </li>
-            <li>
-                <div class="project-wrapper">
-                    <a target="_blank" href="http://www.basecamp.com"><div class="project">Basecamp</div></a>
-                </div>
-            </li>
-            <li>
-                <div class="project-wrapper">
-                    <a target="_blank" href="https://mail.google.com"><div class="project">Google Mail</div></a>
-                </div>
-            </li>
-            <li>
-                <div class="project-wrapper">
-                    <a target="_blank" href="https://docs.google.com"><div class="project">Google Docs</div></a>
-                </div>
-            </li>
-            <li>
-                <div class="project-wrapper">
-                    <a target="_blank" href="https://www.google.com/calendar"><div class="project">Google Calendar</div></a>
-                </div>
-            </li>
-        </ul>
-    </div>
+        // Get the config.
+        if (file_exists('index-assets/config.json')) {
+            $config_arr = json_decode(file_get_contents('index-assets/config.json'), TRUE);
+        } else {
+            header('Location: setup.php');
+        }
 
-    <div class="list-container">
-        <h2 class="test-tools-text header">Testing and tools</h2>
-        <ul class="list">
-            <li>
-                <div class="project-wrapper">
-                    <a target="_blank" href="https://www.browserstack.com"><div class="project">Browser stack</div></a>
+        // Check for hotlinks.
+        $hotlink_html = '';
+        if (isset($config_arr['hotlinks'])) {
+            foreach ($config_arr['hotlinks'] as $hotlink) {
+                $hotlink_html .= '
+                    <li>
+                        <div class="project-wrapper">
+                            <a target="_blank" href="'. $hotlink['href'] .'">
+                                <div class="project">'. $hotlink['title'] .'</div>
+                            </a>
+                        </div>
+                    </li>
+                ';
+            }
+
+            // Render hotlinks.
+            echo '
+                <div class="list-container">
+                    <h2 class="hotlinks-text header">Hotlinks</h2>
+                    <ul class="list">
+                        '. $hotlink_html .'
+                    </ul>
                 </div>
-            </li>
-            <li>
-                <div class="project-wrapper">
-                    <a target="_blank" href="https://www.litmus.com"><div class="project">Litmus</div></a>
+            ';
+        }
+
+        // Check for tools.
+        $tools_html = '';
+        if (isset($config_arr['tools'])) {
+            foreach ($config_arr['tools'] as $tool) {
+                $tools_html .= '
+                    <li>
+                        <div class="project-wrapper">
+                            <a target="_blank" href="'. $tool['href'] .'">
+                                <div class="project">'. $tool['title'] .'</div>
+                            </a>
+                        </div>
+                    </li>
+                ';
+            }
+
+            // Render tools.
+            echo '
+                <div class="list-container">
+                    <h2 class="test-tools-text header">Testing and tools</h2>
+                    <ul class="list">
+                        '. $tools_html .'
+                    </ul>
                 </div>
-            </li>
-            <li>
-                <div class="project-wrapper">
-                    <a target="_blank" href="http://nibbler.silktide.com/"><div class="project">Nibbler (SEO)</div></a>
-                </div>
-            </li>
-        </ul>
-    </div>
+            ';
+        }
 
-    <div class="list-container">
-        <h2 class="projects-text header">Projects</h2>
-        <ul class="list">
-            <?php
+    echo '
+        <div class="list-container">
+            <h2 class="projects-text header">Projects</h2>
+            <ul class="list">
+    ';
 
-            // projects dir
-            $myProjectDir = 'projects';
 
-            $dir = opendir('/htdocs/'.$myProjectDir);
+            // Get the projects dir.
+            $myProjectDir = '/htdocs/'. $config_arr['project_dir'];
 
+            // Open the dir.
+            $dir = opendir($myProjectDir);
+
+            // Read contents of directory
             while ($read = readdir($dir)) {
 
+                // Hide default folders.
                 if ($read!='.' && $read!='..'){
 
-                    // init
+                    // Init.
                     $name      = ucfirst(str_replace('_', ' ', $read));
                     $links_arr = '';
                     $links     = '';
