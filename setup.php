@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0">
     <title>Localhost setup</title>
-    <link rel="stylesheet" href="index-assets/setup.css">
+    <link rel="stylesheet" href="index-assets/css/setup.css">
 </head>
 <body>
     <?php

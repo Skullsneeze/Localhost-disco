@@ -10,7 +10,7 @@ html{
 
 body.disco {
     background: linear-gradient(270deg, #fad700, #fccd11, #f89a20, #ef5b28, #ed4422, #d21f33, #b81f49, #cd1585, #eb1076, #aa26a5, #0f5f88, #068fa3, #00aaa6, #39b7e9, #39cf63, #abcf39);
-background-size: 3200% 3200%;
+    background-size: 3200% 3200%;
     background-size: 2800% 2800%;
 
     -webkit-animation: Myriad 15s ease-in-out infinite;
@@ -28,9 +28,6 @@ background-size: 3200% 3200%;
     left: 0;
     right: 0;
     background-color : #EEE;
-}
-#console{
-  color:#555;
 }
 
 h1.local-text {
@@ -50,6 +47,25 @@ span.sub {
 div.page-container {
     width: 90%;
     margin: 0 auto;
+}
+
+ul.admin-links {
+    position: absolute;
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    top: 10px;
+    z-index: 999;
+}
+ul.admin-links li a,
+ul.admin-links li a:visited {
+    color: #11AAFF;
+    text-decoration: none;
+}
+ul.admin-links li a:focus,
+ul.admin-links li a:hover {
+    color: #11AAFF;
 }
 
 ul.list {
@@ -279,8 +295,7 @@ input[type="text"].search.disco:focus {
  *******************************/
 .switch-container {
     position: absolute;
-    top: 30px;
-    left: 86px;
+    top: 60px;
 }
 
 label.switch-check {

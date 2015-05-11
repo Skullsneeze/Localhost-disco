@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0">
     <title>Start</title>
-    <link rel="stylesheet" href="index-assets/index.css">
-    <link rel="stylesheet" href="index-assets/clock.css">
+    <link rel="stylesheet" href="index-assets/css/icons.css">
+    <link rel="stylesheet" href="index-assets/css/index.css">
+    <link rel="stylesheet" href="index-assets/css/clock.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -18,6 +19,20 @@
     </div>
 
     <h1 class="local-text">Localh<span class="spyglass">o</span>st</h1>
+
+    <ul class="admin-links">
+        <li>
+            <a href="https://github.com/Skullsneeze/Localhost-disco" target="_blank">
+                <span class="icon-github5"></span> Project on GitHub
+            </a>
+        </li>
+        <li>
+            <a href="setup.php">
+                <span class="icon-wrench"></span> Adjust configuration
+            </a>
+        </li>
+    </ul>
+
     <div class="switch-container">
         <div class="label">Disco</div>
         <label class="switch-check">
@@ -25,6 +40,7 @@
             <div><div></div></div>
         </label>
     </div>
+
 
     <div id="clock" class="light">
         <div class="display">
@@ -176,8 +192,8 @@
         ?>
         </ul>
     </div>
-    <script src="index-assets/clock.js" type="text/javascript"></script>
-    <script src="index-assets/bg.js" type="text/javascript"></script>
-    <script src="index-assets/scripts.js" type="text/javascript"></script>
+    <script src="index-assets/js/clock.js" type="text/javascript"></script>
+    <script src="index-assets/js/bg.js" type="text/javascript"></script>
+    <script src="index-assets/js/scripts.js" type="text/javascript"></script>
 </body>
 </html>
