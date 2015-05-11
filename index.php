@@ -107,70 +107,73 @@
             <ul class="list">
     ';
 
-
-            // Get the projects dir.
+        // Get the projects dir.
+        if ($config_arr['project_dir']) {
             $project_dir = $config_arr['project_dir'] .'/';
+        } else {
+            $project_dir = '';
+        }
 
-            // Open the dir.
-            $dir = opendir('/'. basename(__DIR__) .'/'. trim($project_dir, '/'));
+        // Open the dir.
+        $dir = opendir('/'. basename(__DIR__) .'/'. trim($project_dir, '/'));
 
-            // Read contents of directory
-            while ($read = readdir($dir)) {
+        // Read contents of directory
+        while ($read = readdir($dir)) {
 
-                // Hide default folders.
-                if ($read!='.' && $read!='..'){
+            // Hide default folders.
+            if ($read!='.' && $read!='..'){
 
-                    // Init.
-                    $name      = ucfirst(str_replace('_', ' ', $read));
-                    $links_arr = '';
-                    $links     = '';
-                    $project   = '<div class="project">'. $name .'</div>';
+                // Init.
+                $name      = ucfirst(str_replace('_', ' ', $read));
+                $links_arr = '';
+                $links     = '';
+                $project   = '<div class="project">'. $name .'</div>';
 
-                    // Trunk
-                    if (is_dir($project_dir . $read.'/trunk')) {
-                        $links_arr[] = '<a target="_blank" href="'. $project_dir . $read.'/trunk">Trunk</a>';
-                    }
-                    // Trunk fallback
-                    else {
-                        $links_arr[] = '<a target="_blank" href="'. $project_dir . $read.'">'. $name .'</a>';
-                    }
-                    // Branches
-                    if (is_dir($project_dir . $read.'/branches')) {
-                        $links_arr[] = '<a target="_blank" href="'. $project_dir . $read.'/branches">Branches</a>';
-                    }
-                    // Tags
-                    if (is_dir($project_dir . $read.'/tags')) {
-                        $links_arr[] = '<a target="_blank" href="'. $project_dir . $read.'/tags">Tags</a>';
-                    }
-                    // Meta
-                    if (is_dir($project_dir . $read.'/meta')) {
-                        $links_arr[] = '<a target="_blank" href="'. $project_dir . $read.'/meta">Meta</a>';
-                    }
+                // Trunk
+                if (is_dir($project_dir . $read.'/trunk')) {
+                    $links_arr[] = '<a target="_blank" href="'. $project_dir . $read.'/trunk">Trunk</a>';
+                }
+                // Trunk fallback
+                else {
+                    $links_arr[] = '<a target="_blank" href="'. $project_dir . $read.'">'. $name .'</a>';
+                }
+                // Branches
+                if (is_dir($project_dir . $read.'/branches')) {
+                    $links_arr[] = '<a target="_blank" href="'. $project_dir . $read.'/branches">Branches</a>';
+                }
+                // Tags
+                if (is_dir($project_dir . $read.'/tags')) {
+                    $links_arr[] = '<a target="_blank" href="'. $project_dir . $read.'/tags">Tags</a>';
+                }
+                // Meta
+                if (is_dir($project_dir . $read.'/meta')) {
+                    $links_arr[] = '<a target="_blank" href="'. $project_dir . $read.'/meta">Meta</a>';
+                }
 
-                    // set links
-                    if (!empty($links_arr)) {
-                        $links = '
-                            <div class="project-links">
-                                '. implode($links_arr, "\n") .'
-                            </div>
-                        ';
-                    }
-
-                    // wrap list item
-                    echo '<li>';
-                    echo '
-                        <div class="project-wrapper">
-                            '. $links .'
-                            '. $project .'
+                // set links
+                if (!empty($links_arr)) {
+                    $links = '
+                        <div class="project-links">
+                            '. implode($links_arr, "\n") .'
                         </div>
                     ';
-                    echo '</li>';
-
                 }
-            }
 
-            closedir($dir);
-            ?>
+                // wrap list item
+                echo '<li>';
+                echo '
+                    <div class="project-wrapper">
+                        '. $links .'
+                        '. $project .'
+                    </div>
+                ';
+                echo '</li>';
+
+            }
+        }
+
+        closedir($dir);
+        ?>
         </ul>
     </div>
     <script src="index-assets/clock.js" type="text/javascript"></script>
