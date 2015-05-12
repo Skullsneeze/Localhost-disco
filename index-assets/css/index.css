@@ -6,6 +6,7 @@ html{
     font-family: 'Open Sans', sans-serif;
     font-size: 13px;
     padding: 10px;
+    overflow-x: hidden
 }
 
 body.disco {
@@ -54,18 +55,47 @@ ul.admin-links {
     display: block;
     list-style: none;
     margin: 0;
-    padding: 0;
-    top: 10px;
+    padding: 0 20px;
+    top: 0;
+    left: -220px;
     z-index: 999;
+    background: #3c3c3c;
+    width: 180px;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+ul.admin-links.open{
+    position: fixed;
+    left: 0px;
+}
+ul.admin-links li {
+    margin-top: 30px;
+    width: 100%;
+}
+ul.admin-links span {
+    color: #3c3c3c;
+    font-size: 150%;
+    margin-top: 1px;
+    position: absolute;
+    margin-left: -29px;
+    transition: all .25s;
 }
 ul.admin-links li a,
 ul.admin-links li a:visited {
+    border-radius: 3px;
     color: #11AAFF;
+    background: #f5f5f5;
     text-decoration: none;
+    padding: 5px 10px 5px 35px;
+    transition: all .25s;
 }
 ul.admin-links li a:focus,
 ul.admin-links li a:hover {
-    color: #11AAFF;
+    background: #fff;
+}
+
+ul.admin-links li a:hover span {
+    color: #ff3264;
 }
 
 ul.list {
@@ -228,6 +258,117 @@ input[type="text"].search.disco:focus {
 
 .large-header {
     position: absolute;
+}
+
+/* menu icon */
+.cmn-toggle-switch {
+    display: block;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 58px;
+    height: 47px;
+    font-size: 0;
+    text-indent: -9999px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-shadow: none;
+    border-radius: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.cmn-toggle-switch:focus {
+    outline: none;
+}
+
+.cmn-toggle-switch span {
+    display: block;
+    position: absolute;
+    top: 24px;
+    left: 18px;
+    right: 18px;
+    height: 3px;
+    background: white;
+}
+
+.cmn-toggle-switch span::before,
+.cmn-toggle-switch span::after {
+    position: absolute;
+    display: block;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    content: "";
+}
+
+.cmn-toggle-switch span::before {
+    top: -10px;
+}
+
+.cmn-toggle-switch span::after {
+    bottom: -10px;
+}
+
+/* Menu icon to X */
+.cmn-toggle-switch__htx {
+    background-color: #ff3264;
+    transition: left 0.3s;
+}
+
+.cmn-toggle-switch__htx span {
+    transition: background 0 0.3s;
+}
+
+.cmn-toggle-switch__htx span::before,
+.cmn-toggle-switch__htx span::after {
+    transition-duration: 0.3s, 0.3s;
+    transition-delay: 0.3s, 0;
+}
+
+.cmn-toggle-switch__htx span::before {
+    transition-property: top, transform;
+}
+
+.cmn-toggle-switch__htx span::after {
+    transition-property: bottom, transform;
+}
+
+/* active state, i.e. menu open */
+.cmn-toggle-switch__htx.active {
+    background-color: #cb0032;
+    left: 220px;
+    position: fixed;
+    z-index: 999;
+}
+
+.cmn-toggle-switch__htx.active span {
+    background: none;
+}
+
+.cmn-toggle-switch__htx.active span::before {
+  top: 0;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.cmn-toggle-switch__htx.active span::after {
+  bottom: 0;
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.cmn-toggle-switch__htx.active span::before,
+.cmn-toggle-switch__htx.active span::after {
+    transition-delay: 0, 0.3s;
 }
 
 /*******************

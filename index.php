@@ -23,15 +23,21 @@
     <ul class="admin-links">
         <li>
             <a href="https://github.com/Skullsneeze/Localhost-disco" target="_blank">
-                <span class="icon-github5"></span> Project on GitHub
+                <span class="icon icon-github5"></span>
+                Project on GitHub
             </a>
         </li>
         <li>
             <a href="setup.php">
-                <span class="icon-wrench"></span> Adjust configuration
+                <span class="icon icon-wrench"></span>
+                Adjust configuration
             </a>
         </li>
     </ul>
+    <button class="cmn-toggle-switch cmn-toggle-switch__htx">
+        <span>toggle menu</span>
+    </button>
+
 
     <div class="switch-container">
         <div class="label">Disco</div>

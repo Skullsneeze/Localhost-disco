@@ -69,4 +69,11 @@ $(document).ready(function() {
         }
     });
 
+    // Hamburger nav
+    var menu_button = $(document).find('.cmn-toggle-switch');
+    menu_button.click(function() {
+        $(this).toggleClass('active');
+        $('ul.admin-links').toggleClass('open');
+    });
+
 });
