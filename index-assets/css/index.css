@@ -122,7 +122,7 @@ ul.list li div.project-wrapper {
     width:95%;
     display: inline-block;
     position: relative;
-    transition: all 0.3s cubic-bezier(.43,-0.59,.69,1.64);
+    transition: all 0.3s ease;
 }
 ul.list li div.project {
     cursor: pointer;

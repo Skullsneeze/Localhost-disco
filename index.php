@@ -88,7 +88,7 @@
 
             // Render hotlinks.
             echo '
-                <div class="list-container">
+                <div class="list-container hotlinks">
                     <h2 class="hotlinks-text header">Hotlinks</h2>
                     <ul class="list">
                         '. $hotlink_html .'
@@ -114,7 +114,7 @@
 
             // Render tools.
             echo '
-                <div class="list-container">
+                <div class="list-container tools">
                     <h2 class="test-tools-text header">Testing and tools</h2>
                     <ul class="list">
                         '. $tools_html .'
@@ -124,7 +124,7 @@
         }
 
     echo '
-        <div class="list-container">
+        <div class="list-container projects">
             <h2 class="projects-text header">Projects</h2>
             <ul class="list">
     ';
@@ -137,7 +137,7 @@
         }
 
         // Open the dir.
-        $dir = opendir('/'. basename(__DIR__) .'/'. trim($project_dir, '/'));
+        $dir = opendir(__DIR__ .'/'. trim($project_dir, '/'));
 
         // Read contents of directory
         while ($read = readdir($dir)) {
@@ -153,11 +153,11 @@
 
                 // Trunk
                 if (is_dir($project_dir . $read.'/trunk')) {
-                    $links_arr[] = '<a target="_blank" href="'. $project_dir . $read.'/trunk">Trunk</a>';
+                    $links_arr[] = '<a class="trunk-link" target="_blank" href="'. $project_dir . $read.'/trunk">Trunk</a>';
                 }
                 // Trunk fallback
                 else {
-                    $links_arr[] = '<a target="_blank" href="'. $project_dir . $read.'">'. $name .'</a>';
+                    $links_arr[] = '<a class="trunk-link" target="_blank" href="'. $project_dir . $read.'">'. $name .'</a>';
                 }
                 // Branches
                 if (is_dir($project_dir . $read.'/branches')) {
