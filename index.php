@@ -65,8 +65,10 @@
     <?php
 
         // Get the config.
+        $config_arr = array();
         if (file_exists('index-assets/config.json')) {
-            $config_arr = json_decode(file_get_contents('index-assets/config.json'), TRUE);
+            $json_config = file_get_contents('index-assets/config.json');
+            $config_arr = json_decode($json_config, TRUE);
         } else {
             header('Location: setup.php');
         }
@@ -143,7 +145,7 @@
         while ($read = readdir($dir)) {
 
             // Hide default folders.
-            if ($read!='.' && $read!='..'){
+            if ($read!='.' && $read!='..' && $read!='.DS_Store'){
 
                 // Init.
                 $name      = ucfirst(str_replace('_', ' ', $read));
